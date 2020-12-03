@@ -1,0 +1,110 @@
+﻿@model PacientesAtendimentos.Models.Paciente
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h1>Detalhes</h1>
+
+<h4>Paciente</h4>
+<hr />
+<div class="row">
+    <div class="col container">
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.DataNascimento)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.DataNascimento)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Sexo)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Sexo)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.EstadoCivil)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.EstadoCivil)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Telefone)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Telefone)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Contato)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Contato)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Profissao)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Profissao)
+            </dd>
+        </dl>
+        <div>
+            <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model.Id">Editar</a> |
+            <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+        </div>
+    </div>
+    <div class="col container-fluid">
+        <h5>Próximos Atendimentos</h5>
+        <table class="table table-hover table-striped table-responsive-sm">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Atendimentos)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var atendimento in Model.Atendimentos)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => atendimento.Data)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@atendimento.Id">Editar</a> |
+                            <a asp-action="Details" asp-route-id="@atendimento.Id">Detalhes</a> |
+                            <a asp-action="Delete" asp-route-id="@atendimento.Id">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

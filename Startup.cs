@@ -3,10 +3,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PacientesAtendimentos.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PacientesAtendimentos.Repositories;
 
 namespace PacientesAtendimentos
 {
@@ -23,6 +26,12 @@ namespace PacientesAtendimentos
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddMvc();
+
+            services.AddDbContext<DataContext>(opcoes => opcoes.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            services.AddScoped<IPacienteRepository, PacienteRepository>();
+            services.AddScoped<IAtendimentoRepository, AtendimentoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +55,7 @@ namespace PacientesAtendimentos
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Pacientes}/{action=Index}/{id?}");
             });
         }
     }

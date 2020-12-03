@@ -1,0 +1,73 @@
+﻿@model PacientesAtendimentos.Models.ViewModel.PacienteViewModel;
+
+@{
+    ViewData["Title"] = "Novo Paciente";
+}
+
+<h4>Cadastrar Novo Paciente</h4>
+<br />
+<form asp-action="Create">
+    <div class="row">
+        <div class="col-md-4">
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-group">
+            <label asp-for="Paciente.Nome">Nome</label>
+            <input type="text" class="form-control" asp-for="Paciente.Nome" placeholder="Escreva o nome..." />
+            <span asp-validation-for="Paciente.Nome" class="text-danger"></span>
+        </div>
+        <div class="col form-group">
+            <label asp-for="Paciente.DataNascimento">Data de Nascimento</label>
+            <input type="date" class="form-control" asp-for="Paciente.DataNascimento" />
+            <span asp-validation-for="Paciente.DataNascimento" class="text-danger"></span>
+        </div>
+        <div class="col form-group">
+            <label asp-for="Paciente.Sexo" class="control-label">Sexo</label>
+            <select asp-for="Paciente.Sexo" asp-items="@(new SelectList(Model.ListaSexos))" class="form-control single-select">
+                <option selected>Sexo</option>
+            </select>
+            <span asp-validation-for="Paciente.Sexo" class="text-danger"></span>
+        </div>
+        <div class="col form-group">
+            <label asp-for="Paciente.EstadoCivil" class="control-label">Estado Civil</label>
+            <select asp-for="Paciente.EstadoCivil" asp-items="@(new SelectList(Model.ListaEstadoCivil))" class="form-control single-select">
+            </select>
+            <span asp-validation-for="Paciente.EstadoCivil" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 form-group">
+            <label asp-for="Paciente.Profissao">Profissão</label>
+            <input type="text" class="form-control" asp-for="Paciente.Profissao" />
+            <span asp-validation-for="Paciente.Profissao" class="text-danger"></span>
+        </div>
+
+        <div class="col-5 form-group">
+            <label asp-for="Paciente.Email">E-mail</label>
+            <input type="email" class="form-control" asp-for="Paciente.Email" />
+            <span asp-validation-for="Paciente.Email" class="text-danger"></span>
+        </div>
+        <div class="col form-group">
+            <label asp-for="Paciente.Telefone">Telefone</label>
+            <input type="tel" class="form-control" asp-for="Paciente.Telefone" pattern="[0-9]{2} [0-9]{5}-[0-9]{4}" placeholder="62 99999-9999" />
+            <span asp-validation-for="Paciente.Telefone" class="text-danger"></span>
+        </div>
+        <div class="col form-group">
+            <label asp-for="Paciente.Contato">Contato</label>
+            <input type="text" class="form-control" asp-for="Paciente.Contato" />
+            <span asp-validation-for="Paciente.Contato" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+<br />
+<a asp-action="Index" class="btn btn-secondary">Voltar</a>
+
+
+

@@ -11,6 +11,9 @@ namespace PacientesAtendimentos.Models
         [Required]
         [Display(Name = "Valor da Sessão")]
         public decimal Valor { get; set; }
+        [Required]
+        public Paciente Paciente { get; set; }
+        public int PacienteId { get; set; }
 
         public Atendimento()
         {       
